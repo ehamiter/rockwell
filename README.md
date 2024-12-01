@@ -78,7 +78,7 @@ curl http://localhost:3000/websites
 
 ### View changes
 ```bash
-curl http://localhost:3000/websites/changes
+curl http://localhost:3000/changes
 ```
 
 ### Update check frequency
