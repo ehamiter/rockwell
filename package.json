@@ -1,0 +1,18 @@
+{
+  "name": "website-monitor",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "node --test src/**/*.test.js"
+  },
+  "dependencies": {
+    "node-cron": "^3.0.3",
+    "node-fetch": "^3.3.2",
+    "crypto": "^1.0.1",
+    "express": "^4.18.2",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^5.1.7",
+    "nodemailer": "^6.9.7"
+  }
+}
