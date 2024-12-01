@@ -77,7 +77,7 @@ async function sendEmail(url, message) {
 /**
  * Adds a website to the monitoring system
  * @param {string} url - The URL of the website to monitor
- * @param {number} checkFrequency - How often to check for changes, in hours (default: 24 hours)
+ * @param {number} checkFrequency - How often to check for changes, in hours (default: 1 hour)
  */
 export async function addWebsiteToMonitor(url, checkFrequency = 1) {
   const db = await getDatabase();
