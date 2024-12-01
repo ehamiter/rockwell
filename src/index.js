@@ -14,10 +14,14 @@ async function startServer() {
     console.log(`Server running on port ${PORT}`);
   });
 
-  // Schedule website checks to run every hour
-  cron.schedule('0 * * * *', async () => {
-    console.log('Running scheduled website checks...');
-    await checkWebsiteChanges();
+  // Check every minute to see if any websites need checking
+  cron.schedule('* * * * *', async () => {
+    try {
+      console.log('Checking for websites that need updating...');
+      await checkWebsiteChanges();
+    } catch (error) {
+      console.error('Error checking websites:', error);
+    }
   });
 }
 

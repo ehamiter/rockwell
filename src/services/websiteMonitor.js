@@ -94,13 +94,20 @@ export async function addWebsiteToMonitor(url, checkFrequency = 1) {
 
 export async function checkWebsiteChanges() {
   const db = await getDatabase();
+  
+  // Only get websites that are due for checking based on their check_frequency
   const websites = await db.all(`
     SELECT * FROM websites 
     WHERE datetime('now') >= datetime(last_checked, '+' || check_frequency || ' hours')
   `);
 
+  if (websites.length > 0) {
+    console.log(`Found ${websites.length} website(s) to check`);
+  }
+
   for (const website of websites) {
     try {
+      console.log(`Checking ${website.url} (frequency: ${website.check_frequency}h)`);
       const currentHash = await fetchAndHash(website.url);
 
       if (currentHash !== website.last_hash) {
@@ -121,6 +128,7 @@ export async function checkWebsiteChanges() {
           'UPDATE websites SET last_checked = datetime("now") WHERE id = ?',
           [website.id]
         );
+        console.log(`No changes for ${website.url}`);
       }
     } catch (error) {
       console.error(`Error checking ${website.url}:`, error);
