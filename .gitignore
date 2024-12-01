@@ -132,3 +132,7 @@ dist
 # SQLite database files
 *.db
 monitor.db
+
+# Environment files
+.env
+rockwell.env
