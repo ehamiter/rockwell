@@ -76,6 +76,11 @@ curl -X POST http://localhost:3000/websites \
 curl http://localhost:3000/websites
 ```
 
+### View changes
+```bash
+curl http://localhost:3000/websites/changes
+```
+
 ### Update check frequency
 ```bash
 sqlite3 monitor.db
